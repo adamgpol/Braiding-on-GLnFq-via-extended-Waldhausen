@@ -1,0 +1,74 @@
+\subsection{Braided monoidal categories}
+\label{DefnBraiding}
+Conventionally one defines a braided monoidal category to be a monoidal category equipped with an additional natural isomorphism \[\gamma_{x,y}: \xymatrix{x \otimes y \ar[r]^{\sim} & y \otimes x}\] satisfying the so-called hexagon identities. 
+In their foundational work on braided monoidal categories, Joyal and Street gave an equivalent way to define such structures \cite{Joyal-StreetBTC}. Namely, a braided monoidal category is equivalently a monoid object in the monoidal $2$-category $\mathbf{Mon}$. This $2$-category has objects monoidal categories, $1$-morphisms monoidal functors and $2$-morphisms monoidal natural transformation. The Cartesian product endows it with a monoidal structure. %We call such structures {\em doubly monoidal categories}
+As this is the notion of braiding which we shall use throughout this paper we will now unpack the Joyal and Street definition.
+
+\begin{Definition}
+A braided monoidal category is the monoidal category \\$(\CCC, \otimes,\monunit, \alpha,\lambda, \rho)$ endowed with the following additional data:
+
+\begin{enumerate}
+    \item a functor $\mu: \CCC \times \CCC \to \CCC$;
+    \item an isomorphism $\epsilon: \monunit \to \mu(\monunit,\monunit)$;
+    \item a natural isomorphism
+    \begin{equation}
+        \stik{1}{
+                \CCC^{\times 4} \ar{r}{\mu\times\mu} \ar{d}{\overline{\otimes}^2} \& \CCC^{\times 2} \ar{d}{\otimes}  \ar[Rightarrow, shorten <=1em,shorten >=1em]{dl}{\beta} \\
+                \CCC^{\times 2} \ar{r}{\mu} \& \CCC
+                }
+    \end{equation}
+    where $\overline{\otimes}^2$ is the induced monoidal structure on $\CCC \times \CCC$.
+    \item natural isomorphisms $\varrho: \mu(-,\monunit) \Rightarrow \Id$ and $\Lambda: \mu(\monunit,-) \Rightarrow \Id$.
+   
+\end{enumerate}
+
+ This data must make the following diagrams commute
+    
+    \lena{Make this cube look presentable as a separate equation. Write all the arrows for now. This is the 2-morphism inverse of the cube we wrote.}
+   
+   \begin{equation}%top-bottom,front-back,left-right
+   \label{braidingcube}
+\stik{2}{
+{} \& {\CCC^4} \ar{rr}[name=topback,above]{\mu^2} \ar{dd}[name=backleft,xshift=-1pc,yshift=1pc]{\overline{\otimes}^2} \& {} \& {\CCC^2} \ar{dd}{\otimes}\\
+{\CCC^6} \ar[crossing over]{rr}[name=topfront,below,xshift=1.5pc]{\mu^3}\ar{dd}[name=frontleft,below,xshift=-1.2pc,yshift=.4pc]{\overline{\otimes}^2 \times \Id^2} \ar{ur}[name=topleft,above, xshift=-.5pc]{\Id^2 \times \overline{\otimes}^2} \& {} \& {\CCC^3} \ar{dd}[name=frontright,xshift=-2.2pc,yshift=1.3pc]{\otimes\times \Id} \ar{ur}[name=topright,below,xshift=.4pc]{\Id\times \otimes} \& {}\\
+{} \& {\CCC^2} \ar{rr}[xshift=.2pc]{\mu} \& {} \& {\CCC}\\
+{\CCC^4} \ar{rr}[name=bottomfront,below]{\overline{\otimes}^2} \ar{ur}[name=bottomleft,sloped,yshift=-0.2pc]{} \& {} \& {\CCC^2} \ar{ur}[below]{\otimes}
+\arrow[Rightarrow,to path={(topright) to[bend left] (topback)}]{}{\beta\times \Id_\mu}%may be wrong
+\arrow[Rightarrow,to path={(frontright) to[bend right] (bottomfront)}]{}{\Id_\mu \times \beta}%may be wrong
+\arrow[Rightarrow,crossing over,to path={(frontright) to[bend right] (topright)}]{}[below,xshift=.1pc]{\alpha}
+\arrow[Rightarrow,to path={(bottomfront) to[bend right] (bottomleft)}]{}{\beta}
+\arrow[Rightarrow,to path={(bottomleft) to[bend left] (backleft)}]{}{\overline{\alpha}^2}
+\arrow[Rightarrow,to path={(topback) to[bend left] (backleft)}]{}{\beta}
+\latearrow{commutative diagrams/crossing over}{2-3}{4-3}{}
+\latearrow{commutative diagrams/crossing over}{2-1}{2-3}{}
+}
+\end{equation}
+    
+\[
+\stik{1}{
+                \otimes  (\mu \times \monunit) \ar[Rightarrow]{r}{\otimes (\mu \times \epsilon)} \ar[Rightarrow]{d}{\rho \mu} \& \otimes \mu^2 (\Id^2 \times \monunit^2) \ar[Rightarrow]{d}{\beta (\Id^2 \times \monunit^2)}  \\
+                \mu\ar[Leftarrow]{r}{\mu \overline{\rho}^2} \& \mu \overline{\otimes}^2(\Id^2\times\monunit^2)
+                } \]
+                
+\[
+\stik{1}{
+                \otimes (\monunit \times \mu) \ar[Rightarrow]{r}{\otimes (\epsilon \times \mu)} \ar[Rightarrow] {d}{\lambda \mu} \& \otimes \mu^2 (\monunit^2\times\Id^2) \ar[Rightarrow]{d}{\beta(\monunit^2\times\Id^2)}   \\
+                \mu \ar[Leftarrow]{r}{\mu \overline{\lambda}^2} \& \mu \overline{\otimes}^2 (\monunit^2\times\Id^2)
+                }\] 
+                
+\end{Definition}
+
+%What about when C is linear? Should do everything in terms of \boxtimes and such. \lena{No, just say it carries over to this setting}
+
+A monoidal category $(\CCC, \otimes,\monunit, \alpha,\lambda, \rho)$ with braiding $\gamma$ can be endowed with the above structure by defining $\beta = \Id\otimes \gamma \otimes \Id$, $\varrho = r^{-1}$ and $\Lambda = \lambda^{-1}$. Conversely, given the above structure on $\CCC$ one associates the braiding 
+\begin{equation}
+\label{ExtractBraiding}
+\gamma = (\varrho \otimes \Lambda)^{-1} \circ \beta^{-1} \circ \mu(\rho,\lambda)^{-1} \circ \mu(\lambda,\rho) \circ \beta \circ (\Lambda \otimes \varrho). 
+\end{equation}
+These constructions extend to yield equivalences between the $2$-categories of braided monoidal categories and monoid objects in $\Mon$.
+
+
+%\begin{Remark}
+%The equivalence between these two definitions of a braided monoidal category is an instance of Dunn additivity for the $E_n$ operads \cite{Dunn}. The conventional definition says that a braided monoidal category is an algebra over the {\em parenthesized braid operad}, which is an $E_2$-operad in groupoids ***citation?***\lena{if true, citation is not needed}. The definition we use throughout this paper is that of an $E_1$-algebra in the category of $E_1$-algebras. The $n=2$ case of Dunn additivity, namely that $E_2$-alg$\ \simeq E_1$-alg$(E_1$-alg$)$, is the desired equivalence.
+%\end{Remark}
+

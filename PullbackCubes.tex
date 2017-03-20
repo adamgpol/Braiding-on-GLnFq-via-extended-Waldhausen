@@ -1,0 +1,96 @@
+\section{Pullback cubes}
+
+\begin{Definition}
+\label{PullbackCube}
+A commutative cube \[
+\stik{1}{
+ \& A \ar{rr} \ar{dd} \& {} \& B \ar{dd}\\
+X \ar[crossing over]{rr} \ar{dd} \ar{ur} \& {} \& Y \ar{dd} \ar{ur} \& {}\\
+{} \& C \ar{rr} \& {} \& D\\
+Z \ar{rr} \ar{ur} \& {} \& W \ar{ur}
+\latearrow{commutative diagrams/crossing over}{2-3}{4-3}{}
+}
+\]
+is said to be a \emph{pullback} cube if it presents $X$ as the limit of the rest of the diagram. i.e. for any other commutative cube 
+\[
+\stik{1}{
+ \& A \ar{rr} \ar{dd} \& {} \& B \ar{dd}\\
+\widetilde{X} \ar[crossing over]{rr} \ar{dd} \ar{ur} \& {} \& Y \ar{dd} \ar{ur} \& {}\\
+{} \& C \ar{rr} \& {} \& D\\
+Z \ar{rr} \ar{ur} \& {} \& W \ar{ur}
+\latearrow{commutative diagrams/crossing over}{2-3}{4-3}{}
+}
+\]
+There exists a unique morphism $\widetilde{X}\to X$ making everything commute.
+\end{Definition}
+
+\begin{Lemma}
+\label{PullbackCubeLemma}
+
+For simplicity we will consider the 1-category case, as the proof works very similarly for 2-categories.
+
+Consider a commutative cube in some category
+\[
+\stik{1}{
+ \& A \ar{rr} \ar{dd} \& {} \& B \ar{dd}\\
+X \ar[crossing over]{rr} \ar{dd} \ar{ur} \& {} \& Y \ar{dd} \ar{ur} \& {}\\
+{} \& C \ar{rr} \& {} \& D\\
+Z \ar{rr} \ar{ur} \& {} \& W \ar{ur}
+\latearrow{commutative diagrams/crossing over}{2-3}{4-3}{}
+}
+\]
+And suppose that $ABCD$ is a pullback square, then $XYZW$ is a pullback square if and only if the whole cube is a pullback cube.
+\end{Lemma}
+
+\begin{proof}
+Assume $XYZW$ is a pullback square.
+
+Consider another commutative cube 
+\[
+\stik{1}{
+ \& A \ar{rr} \ar{dd} \& {} \& B \ar{dd}\\
+\widetilde{X} \ar[crossing over]{rr} \ar{dd} \ar{ur} \& {} \& Y \ar{dd} \ar{ur} \& {}\\
+{} \& C \ar{rr} \& {} \& D\\
+Z \ar{rr} \ar{ur} \& {} \& W \ar{ur}
+\latearrow{commutative diagrams/crossing over}{2-3}{4-3}{}
+}
+\]
+We want to show that there is a unique map $\widetilde{X}\to X$ that makes everything commute.
+
+Since $XYZW$ is a pullback square we have a unique map $\widetilde{X}\to X$ such that $\widetilde{X}Y=XY\circ\widetilde{X}X$ and $\widetilde{X}Z=XZ\circ\widetilde{X}X$.
+
+we just need to show that $\widetilde{X}A=XA\circ\widetilde{X}X$. This follows because both sides are a map $\widetilde{X} \to A$ which make the diagram
+\[
+\stik{1}{
+\widetilde{X} \ar{dr} \ar{drr} \ar{ddr} \\
+{} \& A \ar{d} \ar{r}\& B \ar{d} \\
+{} \& C \ar{r} \& D
+}
+\]
+commute. Since we assumed $ABCD$ is a pullback such a map is unique.
+
+Assume now that the cube is a pullback and consider a square \[
+\stik{1}{
+\widetilde{X} \ar{r} \ar{d} \& Y \ar{d} \\
+Z \ar{r} \& W
+}
+\]
+We want to show that there is a unique map $\widetilde{X}\to X$ which makes the diagram 
+\[
+\stik{1}{
+\widetilde{X} \ar{dr} \ar{drr} \ar{ddr} \\
+{} \& X \ar{d} \ar{r}\& Y \ar{d} \\
+{} \& Z \ar{r} \& W
+}
+\]
+commute.
+
+The compositions $YB\circ\widetilde{X}Y$ and $ZC\circ\widetilde{X}Z$ fit in a commutative square 
+\[
+\stik{1}{
+\widetilde{X} \ar{r} \ar{d} \& B \ar{d} \\
+C \ar{r} \& D
+}
+\]
+and so there is a map $\widetilde{X}\to A$ that makes everything commute, and since the cube is a pullback this gives us our desired map $\widetilde{X}\to X$.
+\end{proof}

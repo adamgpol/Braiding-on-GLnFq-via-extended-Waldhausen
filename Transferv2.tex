@@ -1,0 +1,25 @@
+\section{Transfer to linear categories}
+\label{Transferv2}
+
+In this section we shall define a symmetric monoidal functor from the bicategory of iterated correspondences of (locally finite) groupoids to the bicategory of linear categories. The functor we write is a slight generalization of the {\em $2$-linearization} functor of Morton **CITE**, in that we extend the domain of definition from finite groupoids to locally finite groupoids.
+
+The source of the functor is the symmetric monoidal bicategory of iterated correspondences of locally finite groupoids, $\Corr_2^\times$. The objects of this bicategory are the locally finite groupoids. A $1$-morphism from an object $\GG$ to an object $\GG'$ is a correspondence, that is, a diagram 
+\begin{equation*}
+    \stik{1}{ 
+    \& \HH \ar[rd] \ar[ld] \& \\
+    \GG \& \& \GG',}
+\end{equation*}
+wherein both functors are finite. Finally, a $2$-morphism is an equivalence class of correspondences of correspondences, that is, an equivalence class of diagrams
+\begin{equation*}
+    \stik{1}{ \& \& \HH \ar{rrd} \ar{lld} \ar[Rightarrow, shorten <=1em,shorten >=2em]{ldd} \ar[Rightarrow, shorten <=1em,shorten >=2em]{rdd} \& \& \\
+    \GG \& \& \mathcal{I} \ar{u} \ar{d}    \& \& \GG'.\\
+     \& \ \& \HH' \ar{rru} \ar{llu} \& \ \& } %This sucks
+\end{equation*}
+wherein all functors are finite. Two such diagrams are equivalent when ***BLAH BLAH*** **CITE MORTON**.
+
+\begin{Remark}
+Locally finite groupoids and finite functors between them form an $\infty$-category $\Spaces$ having finite limits. In **CITE** Haugseng defines a symmetric monoidal $(\infty,2)$-category of iterated correspondences in $\CCC$ for any $\infty$-category $\CCC$ having finite limits. The symmetric monoidal bicategory $\Corr_2^\times$ is the homotopy bicategory of Haugseng's $(\infty,2)$-category of iterated correspondences in $\Spaces$.
+\end{Remark}
+
+
+

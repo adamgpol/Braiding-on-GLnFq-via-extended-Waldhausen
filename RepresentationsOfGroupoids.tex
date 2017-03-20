@@ -1,0 +1,40 @@
+\section{Representations of groupoids}
+\label{GroupoidRep}
+In this section we recall some basic notions regarding representations of groupoids and give a convenient formula for the push forward functor.
+
+\begin{Definition}
+A \emph{representation} of a groupoid $G$ is a functor $G\to \Vect_{\field}$ which is non-zero only on finitely many connected components of $G$. Denote the category of representations of $G$ by $\Rep(G)$.
+\end{Definition}
+
+
+Let $G\xrightarrow{p} H$ be a morphism of groupoids. Recall that the fiber of $p$ over $h\in H$ is the groupoid with objects $(g\in G, p(g)\xrightarrow{\sigma} h)$ and morphisms being $g\to g'$ which make everything commute. Denote the fiber $F_h$, and its canonical map to $G$ by $F_h\xrightarrow{i}G$. 
+
+\begin{Definition}
+Say that a morphism $G\xrightarrow{p} H$ of groupoids is \emph{finitary} if $F_h$ has finitely many isomorphism classes for every $h$. 
+\end{Definition}
+
+We have an obvious functor $p^*:\Rep(H)\to\Rep(G)$ given by precomposition.
+
+\begin{Proposition}
+$p^*$ has a bi-adjoint functor $p_*$
+\end{Proposition}
+\begin{proof}
+Let $\rho\in\Rep(G)$ and $h\in H$. We give an explicit formula for $p_*(\rho)(h)$ using the fiber of $p$ over $h$.
+
+Denote by $[F_h]$ the set of isomorphism classes of $F_h$, then the formula for the adjoint is
+\begin{equation}
+p_*(\rho)(h)=\bigoplus_{x\in [F_h]} \rho(i(x))\otimes_{\field [\Aut_{F_h}(x)]}\field
+\end{equation}
+
+(the tensoring with $\field$ is just taking co-invariants with respect to $\Aut_{F_h}(x)$).
+
+To complete the description we need to explain how $p_*(\rho)$ acts on maps in $H$. So let $h\xrightarrow{\tau}h'$ be a map, which since $H$ is a groupoid must be an isomorphism. First, note that $\tau$ induces an equivalence $F_h\to F_{h'}$ by $(g, p(g)\xrightarrow{\sigma} h)\mapsto(g, p(g)\xrightarrow{\tau\circ\sigma} h') $. In particular it induces a bijection $[F_h]\to [F_{h'}]$ which we will also denote by $\tau$. The map $p_*(\rho)(h)\to p_*(\rho)(h')$ is then given by the maps $\rho(i(x))\to\rho(i(\tau(x)))$. It is straightforward to check that this is well defined, and functorial in $\rho$.
+
+Now we need to give the unit and co-unit maps. Let us assume for simplicity that $p$ is faithful, and hence $\Aut_{F_h}(x)$ is trivial for all $x$. Let $\rho\in\Rep(G),\theta\in\Rep(H)$, then
+\begin{eqnarray}
+p_*p^*(\theta)(h)&=\bigoplus_{x\in [F_h]} \theta(p(i(x)))\cong \bigoplus_{x\in [F_h]} \theta(h)\\
+p^*p_*(\rho)(g)&=p_*(\rho)(p(g))=\bigoplus_{x\in [F_{p(g)}]} \rho(i(x))
+\end{eqnarray}
+
+The maps $\Id\to p_*p^* \to \Id$ are just the diagonal and averaging maps. The maps $\Id\to p^*p_* \to \Id$ are partial diagonal and averaging maps, using the isomorphisms $i(x)\cong g$ lifting $p(i(x))\cong p(g)$, whenever the lift exists.
+\end{proof}

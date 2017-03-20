@@ -1,0 +1,383 @@
+\setcounter{secnumdepth}{3}
+%packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{comment}
+\usepackage[backend=bibtex,style=alphabetic,citestyle=alphabetic]{biblatex}
+\addbibresource{Bibliography.bib}
+\usepackage{mathtools}
+\usepackage[title,toc]{appendix}
+%\usepackage[2cell,ps]{xy}
+\usepackage{hyperref}
+\usepackage{bbm}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz-cd}
+\usepackage{wasysym}
+\usepackage{varwidth}
+\usepackage{mathtools}
+\usepackage{xspace}
+\usepackage{aliascnt}
+\usepackage[bbgreekl]{mathbbol}
+
+\makeatletter
+\renewcommand*\sectionautorefname{\S\@gobble}
+\renewcommand*\subsectionautorefname{\S\@gobble}
+\renewcommand*\subsubsectionautorefname{\S\@gobble}
+\makeatother
+
+%xymatrix stuff
+\usepackage[2cell,ps]{xy}
+\input xy
+\UseAllTwocells
+\xyoption{all}
+\newcommand{\cmatrix}[2][]{\vcenter{\xymatrix #1{#2}}}
+\newcommand{\smatrix}[1]{\vcenter{\xymatrix @C=0.2cm@R=0.3cm{#1}}}
+
+% %comments in article
+ \def\adam#1{
+ \begin{tikzpicture}[anchor=base, baseline]%
+ \draw (0,0) node[rectangle,%
+       rounded corners,%
+       shading=axis,%
+       left color=green!50!white,%
+       right color=green!50!white,%
+       draw=red,%
+       thick%
+       ](A){\begin{varwidth}{30em}#1\end{varwidth}};%
+ \end{tikzpicture}
+ \cite{comment}%
+ }
+
+ \def\lena#1{
+ \begin{tikzpicture}[anchor=base, baseline]%
+ \draw (0,0) node[rectangle,%
+       rounded corners,%
+       shading=axis,%
+       left color=red!50!white,%
+       right color=red!50!white,%
+       draw=blue,%
+       thick%
+       ](A){\begin{varwidth}{30em}#1\end{varwidth}};%
+ \end{tikzpicture}%
+  \cite{comment}
+ }
+
+ \def\markp#1{
+ \begin{tikzpicture}[anchor=base, baseline]%
+ \draw (0,0) node[rectangle,%
+       rounded corners,%
+       shading=axis,%
+       left color=blue!50!white,%
+       right color=blue!50!white,%
+       draw=red,%
+       thick%
+       ](A){\begin{varwidth}{30em}#1\end{varwidth}};%
+ \end{tikzpicture}%
+  \cite{comment}
+ }
+
+% %turn off comments
+% %\def\adam#1{}
+% %\def\lena#1{}
+% %\def\mark#1{}
+
+% math
+\newcommand{\Trans}{T}
+\mathchardef\mhyphen="2D
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\pt}{pt}
+\DeclareMathOperator{\FinSet}{\mathbf{FinSet}}
+\DeclareMathOperator{\Set}{\mathbf{Set}}
+\DeclareMathOperator{\POSet}{\mathbf{POSet}}
+\DeclareMathOperator{\Cat}{\mathbf{Cat}}
+\DeclareMathOperator{\Grpd}{\mathbf{Grpd}}
+\DeclareMathOperator{\LinCat}{\mathbf{LinCat}}
+\DeclareMathOperator{\Fun}{Fun}
+\newcommand{\Func}{\mathcal{F}}
+\DeclareMathOperator{\AbCat}{\mathbf{AbCat}}
+\DeclareMathOperator{\Ab}{\mathbf{Ab}}
+\DeclareMathOperator{\Stacks}{\mathbf{Stacks}}
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Cub}{Cub}
+\DeclareMathOperator{\degen}{degen}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Rep}{Rep}
+\newcommand{\Vect}{\mathbf{Vect}}
+\newcommand{\AdVect}{\mathbf{Vect_{ad}}}
+\newcommand{\CCub}{\mathcal{C}ub}
+\DeclareMathOperator{\ind}{Ind}
+\DeclareMathOperator{\Bil}{B}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\image}{Im}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Psh}{Psh}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Spaces}{Grpd}
+\DeclareMathOperator{\sset}{sSet}
+\DeclareMathOperator{\lSet}{lSet}
+\DeclareMathOperator{\DLat}{DLat}
+\DeclareMathOperator{\Corr}{Corr}
+\DeclareMathOperator{\OneCorr}{1Corr}
+\DeclareMathOperator{\Coker}{Coker}
+\DeclareMathOperator{\Sh}{Sh}
+\DeclareMathOperator{\Iso}{Iso}
+\DeclareMathOperator{\Ext}{Ext}
+\newcommand{\Shh}{\mathcal{S}}
+\DeclareMathOperator{\Grid}{Grid}
+\DeclareMathOperator{\Sq}{Sq}
+\DeclareMathOperator{\Irr}{Irr}
+\newcommand{\Gln}{Gl_{n}}
+\newcommand{\GL}{GL}
+\newcommand{\CCC}{\mathcal{C}}
+\newcommand{\Fstar}{\mathcal{F}_*}
+\newcommand{\AAA}{\mathcal{A}}
+\newcommand{\BBB}{\mathcal{B}}
+\newcommand{\III}{\mathbbm{I}}
+\newcommand{\Base}{\mathcal{B}}
+\newcommand{\FinCo}{\mathcal{FC}}
+\newcommand{\FinStar}{\FinSet_*}
+\newcommand{\CatStar}{\mathfrak{C}}
+\newcommand{\CatAd}{\Cat_{ex}}
+\newcommand{\aug}[1]{A(#1)}
+\newcommand{\grid}{\operatorname{grid}}
+\newcommand{\CatEx}{\Cat_{Ex}}
+\newcommand{\FinDisj}{\FinSet^{\sqcup}}
+\newcommand{\GSet}{G\operatorname{Set}}
+\newcommand{\OrdSet}{\mathbb{\Delta}}
+\newcommand{\AugOrdSet}{\mathbb{\Delta}_+}
+\newcommand{\OrdDisj}{\OrdSet^{\sqcup}}
+\newcommand{\OrdNon}{\OrdSet_+}
+\newcommand{\Mon}{\mathbf{Mon}}
+\DeclareMathOperator{\CAlg}{CAlg}
+\DeclareMathOperator{\PolyFun}{PolyFun}
+\newcommand{\Hop}{\mathcal{H}}
+\newcommand{\Heis}{\operatorname{Heis}}
+\newcommand{\FHeis}{\operatorname{FHeis}}
+\newcommand{\XXX}{\mathcal{X}}
+\newcommand{\FF}{\mathbbm{F}}
+\newcommand{\Ff}{\mathcal{F}}
+\newcommand{\NN}{\mathbbm{N}}
+\newcommand{\ZZ}{\mathbbm{Z}}
+\DeclareMathOperator{\point}{\pt}
+\newcommand{\kk}{\mathbbm{k}}
+\newcommand{\CC}{\mathbbm{C}}
+\newcommand{\QQ}{\mathbbm{Q}}
+\newcommand{\PPS}[1]{{\mathcal{P}^{\otimes #1}}}
+\newcommand{\CS}[1]{{\mathcal{C}^{\otimes #1}}}
+\newcommand{\AAS}[1]{A^{\otimes #1}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\PPC}[1]{\mathcal{P}^{\times #1}}
+\newcommand{\cartesianarrow}{\xrightarrow{+}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\Dual}{\mathbbm{D}}
+\newcommand{\DD}{\mathcal{D}}
+\newcommand{\DDD}{\mathcal{D}}
+\newcommand{\Double}{\mathcal{D}}
+\newcommand{\str}[1]{\operatorname{str}_{#1}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\Fq}{\mathbb{F}_q}
+\newcommand{\AdCat}{\mathbbm{Ad}\operatorname{Cat}}
+\newcommand{\kAlg}{\kk\mhyphen\operatorname{alg}}
+\newcommand{\Zmod}{\ZZ\mhyphen\operatorname{Mod}}
+\newcommand{\TwoVect}{\mathbf{2}\mhyphen \Vect}
+\newcommand{\TwoVectAd}{{\mathbbm{2}\mhyphen \Vect}}
+\newcommand{\fset}[1]{[#1]}
+\newcommand{\pset}[1]{[#1]_*}
+\newcommand{\GLn}{GL_n}
+\newcommand{\ord}[1]{\left[ #1 \right] }
+\newcommand{\ordop}[1]{\left[ #1 \right]_+ }
+\newcommand{\brak}[3]{\left#1 \vcenter{#2} \right#3}
+\newcommand{\longequal}{=\joinrel=\joinrel=}
+\newcommand{\base}[1]{#1_{base}}
+\newcommand{\omegaCat}{\omega\mhyphen\Cat}
+\newcommand{\smallCat}{\operatorname{sm}\Cat}
+\newcommand{\bbox}[1]{{\Box^#1}}
+\newcommand{\foldbox}{\Box^f}
+\newcommand{\monunit}{\mathbbm{1}}
+\newcommand{\field}{\mathbbm{k}}
+\newcommand{\indic}{\mathbbm{1}}
+\newcommand{\twoarrow}[2]{\arrow[shorten >=1em,shorten <=1em,Rightarrow]{#1}[sloped,above]{#2}}
+\newcommand{\triarrow}[5]{\arrow[shorten >=#1cm,shorten <=#2cm,Rightarrow]{#3}[sloped,above,#4]{#5}}
+\newcommand{\ee}{\mathbf{e}}
+\DeclareMathOperator{\depth}{depth}
+\DeclareMathOperator{\Aut}{Aut}
+%added by Mark
+\newcommand{\GG}{\mathcal{G}}
+\newcommand{\RR}{\mathfrak{R}} 
+\newcommand{\MMM}{\mathcal{M}}
+\newcommand{\EEE}{\mathcal{E}}
+\newcommand{\Finpi}{\FinStar^{\rm p.i}}
+\newcommand{\git}{\mathbin{
+  \mathchoice{/\mkern-6mu/}% \displaystyle
+    {/\mkern-6mu/}% \textstyle
+    {/\mkern-5mu/}% \scriptstyle
+    {/\mkern-5mu/}}}% \scriptscriptstyle
+\newcommand{\eps}{\varepsilon}    
+
+%tikzcd stuff
+\newcommand{\tik}{\begin{tikzcd}}
+\newcommand{\tak}{\end{tikzcd}}
+
+\makeatletter
+\def\latearrow#1#2#3#4{%
+  \toks@\expandafter{\tikzcd@savedpaths\path[/tikz/commutative diagrams/every arrow,#1]}%
+  \global\edef\tikzcd@savedpaths{%
+    \the\toks@%
+    (\tikzmatrixname-#2)% \noexpand\tikzcd@sourceanchor)%
+    to%
+    node[/tikz/commutative diagrams/every label] {$#4$}
+    (\tikzmatrixname-#3)% \noexpand\tikzcd@targetanchor)
+;}}
+\makeatother
+
+%scaled tikzcd
+\def\stik#1#2{
+\begin{tikzpicture}[baseline= (a).base]%
+\node[scale=#1] (a) at (0,0){%
+\begin{tikzcd}[ampersand replacement=\&]%
+#2
+\end{tikzcd}%
+};%
+\end{tikzpicture}
+}
+
+\def\widestik#1#2#3#4{
+\begin{tikzpicture}[baseline= (a).base]%
+\node[scale=#1] (a) at (0,0){%
+\begin{tikzcd}[ampersand replacement=\&,column sep=#2em,row sep=#3em]%
+#4
+\end{tikzcd}%
+};%
+\end{tikzpicture}
+}
+
+\def\nstik#1#2{
+\begin{tikzpicture}[baseline= (a).base]%
+\node[scale=#1] (a) at (0,0){%
+\begin{tikzcd}[ampersand replacement=\&,row sep=small,column sep=large]%
+#2
+\end{tikzcd}%
+};%
+\end{tikzpicture}
+}
+
+\def\nnstik#1#2{
+\begin{tikzpicture}[baseline= (a).base]%
+\node[scale=#1] (a) at (0,0){%
+\begin{tikzcd}[ampersand replacement=\&,row sep=small,column sep=small]%
+#2
+\end{tikzcd}%
+};%
+\end{tikzpicture}
+}
+
+%inline tikzcd
+\def\ttik#1{
+\begin{tikzpicture}[anchor=base, baseline,inner sep=0]%
+\node (a) at (0,0){%
+\begin{tikzcd}[ampersand replacement=\&]%
+#1
+\end{tikzcd}%
+};%
+\end{tikzpicture}
+}
+
+\def\smallttik#1{
+\begin{tikzpicture}[anchor=base, baseline,inner sep=0]%
+\node[scale=0.6] (a) at (0,0){%
+\begin{tikzcd}[ampersand replacement=\&]%
+#1
+\end{tikzcd}%
+};%
+\end{tikzpicture}
+}
+
+\newcommand{\mysetminusD}{\hbox{\tikz{\draw[line width=0.6pt,line cap=round] (3pt,0) -- (0,6pt);}}}
+\newcommand{\mysetminusT}{\mysetminusD}
+\newcommand{\mysetminusS}{\hbox{\tikz{\draw[line width=0.45pt,line cap=round] (2pt,0) -- (0,4pt);}}}
+\newcommand{\mysetminusSS}{\hbox{\tikz{\draw[line width=0.4pt,line cap=round] (1.5pt,0) -- (0,3pt);}}}
+
+\newcommand{\mysetminus}{\mathbin{\mathchoice{\mysetminusD}{\mysetminusT}{\mysetminusS}{\mysetminusSS}}}
+
+\newcommand{\mapstack}[2]{
+\begin{tikzpicture}[anchor=base, baseline,inner sep=0, row sep=0]%
+\node[scale=0.6] (b) at (0,0.3){
+$#1$
+};%
+\node[scale=0.6] (a) at (0,0){%
+$#2$
+};%
+\end{tikzpicture}
+}
+\def\smallsquare{
+\begin{tikzpicture}[anchor=base, baseline]%
+\node[scale=0.2] (a) at (0,0){%
+\begin{tikzcd}[ampersand replacement=\&]%
+\cdot \ar{r} \ar{d} \& \cdot \ar{d}\\ \cdot \ar{r} \& \cdot
+\end{tikzcd}%
+};%
+\end{tikzpicture}
+}
+
+\def\leftadjarrow{leftarrow,dashed,red,thick}
+
+\newcommand{\boldtitle}[1]{\begin{flushleft}\textbf{#1}\end{flushleft}}
+
+
+%theorems
+%\theoremstyle{theorem}
+\newtheorem{Theorem}{Theorem}
+\def\Theoremautorefname{Theorem}
+\newtheorem{Proposition}{Proposition}[section]
+\def\Propositionautorefname{Proposition}
+\newaliascnt{Corollary}{Proposition}
+\newtheorem{Corollary}[Corollary]{Corollary}
+\aliascntresetthe{Corollary}
+\def\Corollaryautorefname{Corollary}
+\newaliascnt{Lemma}{Proposition}
+\newtheorem{Lemma}[Lemma]{Lemma}
+\aliascntresetthe{Lemma}
+\def\Lemmaautorefname{Lemma}
+\newtheorem* {Claim}{Claim}
+\def\Claimautorefname{Claim}
+\newtheorem{Conjecture}{Conjecture}
+\def\Conjectureautorefname{Conjecture}
+
+\theoremstyle{definition}
+\newaliascnt{Definition}{Proposition}
+\newtheorem{Definition}[Definition]{Definition}
+\aliascntresetthe{Definition}
+\def\Definitionautorefname{Definition}
+
+\theoremstyle{remark}
+\newaliascnt{Notation}{Proposition}
+\newtheorem{Notation}[Notation]{Notation}
+\aliascntresetthe{Notation}
+\def\Notationautorefname{Notation}
+\newaliascnt{Remark}{Proposition}
+\newtheorem{Remark}[Remark]{Remark}
+\aliascntresetthe{Remark}
+\def\Remarkautorefname{Remark}
+\newtheorem* {Note}{Note}
+\def\Noteautorefname{Note}
+\newaliascnt{Example}{Proposition}
+\newtheorem{Example}[Example]{Example}
+\aliascntresetthe{Example}
+\def\Exampleautorefname{Example}
+\newtheorem* {Idea}{Idea} 
+\def\Ideaautorefname{Idea}
+\newtheorem* {Observation}{Observation}
+\def\Observationautorefname{Observation}
+
+% \renewcommand*{\thesection}{\Roman{section}}
+% \renewcommand*{\thesubsection}{\thesection.\Alph{subsection}}
+
+
+\def\equationautorefname~#1\null{%
+(#1)\null
+}
+
+

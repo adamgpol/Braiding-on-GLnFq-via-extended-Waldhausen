@@ -1,0 +1,70 @@
+\section{Review of linear categories}
+\label{LinCats}
+
+Throughout this paper, the term {\em linear category} will refer to a semisimple abelian category compatibly enriched in $\Vect$ such that every strictly descending chain of subobjects is finite. A functor between linear categories will always be assumed to be additive, right exact and compatible with the $\Vect$-enrichment. 
+\begin{Remark}
+We assume these conditions to ensure that the {\em Deligne-Kelly product} exists \cite{Franco}. Namely, for any two linear categories $L$ and $L'$ there is a universal linear category $L \boxtimes L'$ with a bilinear functor $L \times L' \to L \boxtimes L'$ 
+\end{Remark}
+
+In this paper we will only consider a specific class of linear categories and functors between them arising from groupoid representations. 
+
+\begin{Definition}
+A groupoid $\GG$ is said to be {\em locally finite} if $|\Hom(i,i')| < \infty$ for all objects $i$ and $i'$ of $\GG$. 
+\end{Definition}
+
+Each such groupoid is equivalent to one which is specified by two pieces of data: namely, a set $I$ indexing the isomorphism classes of objects and, for each $i \in I$, a finite group $G_i$ of automorphisms of $i$. We write such a groupoid as $\GG \simeq \coprod_{i \in I} G_i$.
+
+
+\begin{Definition}
+A groupoid is {\em finite} if it is locally finite and has finitely many isomorphism classes of objects. A functor $F: \GG \to \HH$ is {\em finite} if for each object $j$ of $\HH$, the (homotopy) fibre, $F^{-1}(j)$ is a finite groupoid.
+\end{Definition}
+
+Writing $\GG \simeq \coprod_{i \in I} G_i$ and $\HH \simeq \coprod_{j \in J} H_j$, a functor $F: \GG \to \HH$ is equivalent to a function $f:I \to J$ and, for each $i \in I$, a group homomorphism $F_i: G_i \to H_{f(i)}$. Written this way $F$ is finite if and only if $|f^{-1}(j)| < \infty$ for each $j \in J$ and $F_i$ has finite kernel and cokernel for each $i \in I$. (\cite{KapranovDyckerhoff} 8.2.3).
+
+\begin{Remark}
+Note that when $\GG$ and $\HH$ are locally finite the latter condition is automatically satisfied.
+\end{Remark} 
+
+\begin{Definition}
+The category of representations of a groupoid $\GG$, $\RR(\GG)$, is the category of finitely supported functors $\GG \to \Vect$. That is, $\RR(\GG)$ is the full subcategory of $\Fun(\GG,\Vect)$ consisting of those functors which send all but finitely many isomorphism classes of objects in $\GG$ to the $0$ vector space. 
+\end{Definition}
+
+All linear categories considered in this paper will be of the form $\RR(\GG)$ for $\GG$ locally finite. Writing $\GG \simeq \coprod_{i \in I} G_i$ one has that $\RR(\GG) \simeq \oplus_{i \in I} \Rep(G_i)$, which are evidently linear in our sense. Further, one can readily check that for $\GG$ and $\GG'$ locally finite, $\RR(\GG) \boxtimes \RR(\GG') \simeq \RR(\GG \times \GG')$. 
+
+\begin{Proposition}
+(Morton, ***CITE***) For $F: \GG \to \HH$ a finite functor between locally finite groupoids the restriction functor $F^*: \RR(\HH) \to \RR(\GG)$ admits an ambidextrous adjoint $F_*: \RR(\GG) \to \RR(\HH)$.
+\end{Proposition}
+\begin{proof}
+ First, note that since $F$ is finite the left and right adjoints to $F^*$ are given, respectively, by left and right Kan extension. Writing $\GG \simeq \coprod_{i \in I} G_i$ and $\HH\simeq \coprod_{j \in J} H_j$, one can compute, using the pointwise formulas for Kan extensions, that these adjoints are given by
+\begin{align}
+ F_* \ \rho(j) &= \bigoplus_{i \ : \ f(i)=j} \Hom_{\CC[G_i]}\left(\CC[H_j], \rho(i) \right) \nonumber \\
+ F_! \ \rho(j) &= \bigoplus_{i \ : \ f(i)=j} \CC[H_j] \otimes_{\CC[G_i]} \rho(i) \nonumber.
+\end{align}
+ 
+
+Next, for $f:G \to H$ a group homomorphism between finite groups and $V$ a left $G$-module the map
+ \begin{align}
+   \Hom_{\CC[G]}\left(\CC[H], V \right) &\to \CC[H] \otimes_{\CC[G]} V \nonumber \\
+  \phi &\mapsto  \frac{1}{|G|} \sum_{h \in H} h^{-1} \otimes \phi(h) \nonumber %The centering on this is less than ideal
+ \end{align}
+is an isomorphism of left $H$-modules. This assembles into a natural isomorphism $ F_* \simeq F_!$.
+
+\end{proof}
+
+The units and counits which witness $F_*$ being both left and right adjoint to $F^*$ can be readily computed. As we shall need them in the sequel, we record here  the unit for the right adjunction, $\eta_F^R: \Id_{\RR(\HH)} \Rightarrow F_* F^*$, and the counit for the left adjunction, $\eps_F^L: F_*F^* \Rightarrow \Id_{\RR(\HH)}$. For each $\rho \in \RR(\HH)$ and object $j$ of $\HH$ these natural transformations have components
+\begin{align}
+\label{unitexp}
+\eta_F^R(\rho)(j): \rho(j) \ &\to \bigoplus_{i \ : \ f(i)=j} \CC[H_j] \otimes_{\CC[G_i]} \rho(j) \\ \nonumber
+v \ &\mapsto \bigoplus_{i \ : \ f(i)=j} \frac{1}{| G_i |} \sum_{h \in H_j} h \otimes h^{-1} \cdot v
+\end{align}
+and
+\begin{align}
+\label{counitexp}
+\eps_F^L(\rho)(j): \bigoplus_{i \ : \ f(i)=j} \CC[H_j] \otimes_{\CC[G_i]} \rho(j) \ &\to \rho(j) \\ \nonumber
+\bigoplus_{i \ : \ f(i)=j} h_j \otimes v \ &\mapsto \sum_{i \ : \ f(i)=j} h_j \cdot v.
+\end{align}
+
+
+
+
+

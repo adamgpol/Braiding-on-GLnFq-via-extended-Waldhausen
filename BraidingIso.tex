@@ -1,0 +1,84 @@
+\section{The Braiding is an isomorphism}
+\label{BraidingIso}
+
+%Obviously this title needs to change. The contents of this section should appear in the paper, but the exact way in which it happens depends on broader content aspects.
+
+The goal of this section is to prove that the braiding introduced in Section ***REF*** is in fact an isomorphism. To begin, we reduce the braiding square ***REF*** to a form which is amenable to direct calculation.
+
+Given non-negative integers $n_1, \ldots, n_k$ with $n_1 + \cdots n_k = n$ we define the following subgroups of $\GLn$: 
+\begin{itemize}
+\item $\GL_{n_1,\ldots,n_k} := \GL_{n_1} \times \cdots \times \GL_{n_k}$, the block diagonal subgroup;
+\item  $P_{n_1,\ldots,n_k}$, the parabolic subgroup corresponding to the flag 
+\begin{equation*}
+    0 \subset \CC^{n_1} \subset \CC^{n_1 + n_2} \subset\cdots \subset \CC^{n_1 + \cdots n_k}.
+\end{equation*}
+\item $K_{n_1,\ldots, n_k}$, the kernel of the surjection 
+\begin{equation*}
+\pi_{n_1,\ldots, n_k}:\xymatrix{P_{n_1,\ldots, n_k} \ar@{->>}[r] & \GL_{n_1,\ldots, n_k}}
+\end{equation*}
+sending a flag-preserving automorphism to the induced automorphism of the relevant quotient spaces. One therefore has that 
+\begin{equation*}
+    P_{n_1,\ldots, n_k} = K_{n_1,\ldots, n_k} \rtimes \GL_{n_1,\ldots, n_k};
+\end{equation*}
+ 
+\item  $\PP_{n_1, n_2, n_3, n_4}$, the intersection of the parabolic subgroups $P_{n_1, n_2, n_3, n_4}$ and $P_{n_1, n_3, n_2, n_4}$.
+\end{itemize}
+
+ 
+\begin{Proposition}
+The square defining the braiding ***REF*** is equivalent to the correspondence
+\begin{equation}
+    \xymatrix{ & \ar@{->>}[ld]_-\pi \coprod_{a,b,c,d} P_{a,b,c,d} \ar@{^{(}->}[rd]^-i & \\
+    \coprod_{a,b,c,d} \GL_{a,b,c,d} & \coprod_{a,b,c,d} \PP_{a,b,c,d} \ar@{^{(}->}[u]^-I \ar@{^{(}->}[d]_-{\tilde{I}} & \coprod_{n} \GLn, \\
+    & \ar@{->>}[lu]^-{\tilde{\pi}} \coprod_{a,b,c,d} P_{a,c,b,d}\ar@{^{(}->}[ru]_-{\tilde{i}} & }
+\end{equation}
+where $I$, $i$, $\tilde{I}$ and $\tilde{i}$ are given by the obvious subgroup inclusions, and $\pi$ and $\tilde{\pi}$ are given by the surjections $\pi_{a,b,c,d}$.
+\end{Proposition}
+\begin{proof}
+Composing the outer edges of the square yields the correspondence
+
+****** NICE FIGURE WITH H's, I's AND GRID ******
+
+Therefore it suffices to determine skeletal forms for the groupoid ***I***, ***H*** and ****GRID*** and the induced functors between them. Further, note that the skeletons of each of these groupoids have object set given by $4$-tuples of non-negative integers. We proceed by fixing such a $4$-tuple $a,b,c,d$ and determining the corresponding automorphism groups.
+
+For the groupoid ***I***, the automorphism group is the intersection of the parabolics $P_{a,b,a+b+c+d}$ and $P_{c,c+d} \subset \GL_{c+d} \subset \GL_{a+b+c+d}$ inside $\GL_{a+b+c+d}$. This is exactly the parabolic $P_{a,b,c,d}$. The same argument, {\em mutatis mutandi}, proves the claim for the groupoid ***H***.
+
+Finally, for the groupoid ***GRID***, any automorphism must fix both the ***I***-shaped and ***H***-shaped subdiagrams, so the automorphism group must be a subgroup of $P_{a,b,c,d} \cap P_{a,c,b,d}$. One readily verifies that {\em every} element of this intersection defines an automorphism of the grid. %Not great write-up. 
+\end{proof}
+
+The braiding $\beta$ is therefore given by the following composition
+\begin{equation}
+    \xymatrix{i_* \pi^* \ar@{=>}[r]^-{\eta^R_I} & i_* I_* I^* \pi^* \ar@{=}[r] & \tilde{i}_* \tilde{I}_* \tilde{I}^* \tilde{\pi}^* \ar@{=>}[r]^-{\eps_{\tilde{I}}^L} & \tilde{i}_* \tilde{\pi}^*}.
+\end{equation}
+To show that $\beta$ is a natural isomorphism it suffices to show that for each $4$-tuple $a,b,c,d$, and each $\rho \in \Rep(\GL_{a,b,c,d})$ the component $\beta(\rho)$ is an isomorphism.
+
+
+
+\begin{Lemma}
+The components of the braiding $\beta$ corresponding to a representation $\rho \in \Rep(\GL_{a,b,c,d})$ are given by
+\begin{align}
+\CC[\GL_n]\otimes_{\CC[P_{a,b,c,d}]} \rho &\to \CC[\GL_n] \otimes_{\CC[P_{a,c,b,d}]} \rho \\ \nonumber
+\gamma \otimes v &\mapsto \frac{\left|\GL_{a,b,c,d}\right|}{\left| \PP_{a,b,c,d} \right|} \sum_{k \in K_{a,b,c,d}} \gamma k \otimes v. \nonumber
+\end{align}
+\end{Lemma}
+\begin{proof}
+By equation \eqref{unitexp}, $\eta^R_I$ sends $\gamma \otimes v$ to the element of $\CC[\GL_n] \otimes_{\CC[P_{a,b,c,d}]} \left( \CC[P_{a,b,c,d}] \otimes_{\CC[\PP_{a,b,c,d}]} \rho\right)$  given by %doesn't look nice
+\begin{equation*}
+\frac{1}{\left| \PP_{a,b,c,d} \right|} \sum_{p \in P_{a,b,c,d}}\gamma \otimes p \otimes p^{-1} \cdot v = \frac{1}{\left| \PP_{a,b,c,d} \right|} \sum_{p \in P_{a,b,c,d}}\gamma \otimes p \otimes \pi_{a,b,c,d}(p)^{-1} v.
+\end{equation*}
+Since $P_{a,b,c,d} = K_{a,b,c,d} \rtimes \GL_{a,b,c,d}$ every $p \in P_{a,b,c,d}$ can be uniquely written as $p=k g$ where $k \in K_{a,b,c,d}$ and $g \in \GL_{a,b,c,d}$ where $g = \pi_{a,b,c,d}(p)$. Therefore the image of $\gamma \otimes v$ is equal to
+\begin{equation*}
+ \frac{1}{\left| \PP_{a,b,c,d} \right|} \sum_{\substack{ k \in K_{a,b,c,d} \\ g \in \GL_{a,b,c,d}
+ }}\gamma \otimes k g \otimes g^{-1} v = \frac{\left|\GL_{a,b,c,d}\right|}{\left| \PP_{a,b,c,d} \right|} \sum_{k \in K_{a,b,c,d}} \gamma k \otimes e \otimes v,
+\end{equation*}
+where we used that $\GL_{a,b,c,d} \subset \PP_{a,b,c,d}$ and $K_{a,b,c,d} \subset P_{a,b,c,d}$.
+
+Applying the counit $\eps^L_{\tilde{I}}$ to the above expression yields by equation \eqref{counitexp} the claimed expression for the components of $\beta$.
+\end{proof} 
+
+\begin{Theorem}
+The braiding $\beta$ is an isomorphism.
+\end{Theorem}
+\begin{proof}
+
+\end{proof}

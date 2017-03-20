@@ -1,0 +1,95 @@
+\section{Lemmas}
+\begin{Lemma}
+\label{ontolemma}
+Consider a morphism of spans of groupoids
+
+\[
+\stik{1}{
+{} \& A \ar{dr}[above]{f} \ar{dd}{\pi} \ar{dl}[above]{g} \& {} \\
+B \& {} \& C \\
+{} \& D \ar{ur}[below]{f'} \ar{ul}[below]{g'}\& {}
+}
+\]
+
+and suppose that $\pi$ induces a bijection of connected components, and that $\pi$ induces a surjection of automorphism groups for any object. Then $\pi$ induces an isomorphism of functors $\Rep(B)\rightarrow\Rep(C)$ between $g_*f^*$ and $g'_*f'^*$.
+\end{Lemma}
+
+\begin{proof}
+In fact, we will just show in this case that the counit $\pi_*\pi^*\rightarrow\Id_{\Rep(D)}$ is an isomorphism.
+
+Consider $V\in\Rep(D)$ and $d\in D$. Let $a\in A$ be such that $\pi(a)\cong d$. By assumption $a$ is defined up to isomorphism. Fix an isomorphism $\pi(a)\xrightarrow{\varphi} d$. Then we can write \[
+\pi_*\pi^*V(d)=V(\pi(a))\otimes_{\CC[\Aut(a)]}\CC[\Aut(d)]
+\]
+
+Where the action of $\Aut(a)$ on $V(\pi(a))$ is given by the map $\Aut(a)\rightarrow \Aut(\pi(a))$ and the action on $\Aut(d)$ is given similarly via $\pi(a)\xrightarrow{\varphi} d$.
+
+The counit is the map $\pi_*\pi^*V(d)\rightarrow V(d)$ given by \[
+v\otimes \tau \mapsto \tau*\varphi(v).
+\]
+
+The map 
+\[
+v\mapsto \varphi^{-1}(v)\otimes 1
+\]
+is a map of $\Aut(d)$ modules, because we assumed the map $\Aut(a)\rightarrow\Aut(\pi(a))$ is onto, and it is obviously an inverse of this map.
+\end{proof}
+
+\begin{Lemma}
+\label{intolemma}
+Consider a morphism of spans of groupoids
+
+\[
+\stik{1}{
+{} \& A \ar{dr}[above]{f} \ar{dd}{\pi} \ar{dl}[above]{g} \& {} \\
+B \& {} \& C \\
+{} \& D \ar{ur}[below]{f'} \ar{ul}[below]{g'}\& {}
+}
+\]
+
+Suppose that $\pi$ is essentially surjective and faithful and that for any $a\in A$ the image of $f$ in $\Aut(f(a))$ maps onto to the image of $f'$ in $\Aut(f'\circ \pi(a))$. Then $\pi$ induces an isomorphism of functors $\Rep(B)\rightarrow\Rep(C)$ between $g_*f^*$ and $g'_*f'^*$.
+\end{Lemma}
+
+\begin{proof}
+We will prove that the counit $\pi_*\pi^*\rightarrow \Id$ induces an isomorphism $f'\pi_*\pi^*\xrightarrow{\sim}f'$.
+
+As above, consider $V\in\Rep(D)$ and $d\in D$. Let $a\in A$ be such that $\pi(a)\cong d$. By assumption $a$ is defined up to isomorphism. Fix an isomorphism $\pi(a)\xrightarrow{\varphi} d$. Then we can write \[
+\pi_*\pi^*V(d)=V(\pi(a))\otimes_{\CC[\Aut(a)]}\CC[\Aut(d)]
+\]
+
+Where the action of $\Aut(a)$ on $V(\pi(a))$ is given by the map $\Aut(a)\rightarrow \Aut(\pi(a))$ and the action on $\Aut(d)$ is given similarly via $\pi(a)\xrightarrow{\varphi} d$.
+
+The counit is the map $\pi_*\pi^*V(d)\rightarrow V(d)$ given by \[
+v\otimes \tau \mapsto \tau*\varphi(v).
+\]
+
+Now let $c\in C$. We have \[
+f'_*V(c)=\bigoplus_{f'(d)\cong c} V(d) \otimes_{\CC[\Aut(d)]}\CC[\Aut(c)]
+\]
+and \[
+f'\pi_*\pi^*V(c)=\bigoplus_{f'(d)\cong c} \left(V(\pi(a_d))\otimes_{\CC[\Aut(a_d)]}\CC[\Aut(d)]\right) \otimes_{\CC[\Aut(d)]}\CC[\Aut(c)]
+\]
+
+For computational purposes, fix isomorphisms $\psi:f'(d)\rightarrow c$ and $\varphi:\pi(a)\rightarrow d$. Then for $v\in V(\pi(a)),\tau\in\Aut(d),\alpha\in\Aut(c)$ the counit induces the map
+\[
+F:v\otimes \tau \otimes \alpha \mapsto \tau*\varphi(v)\otimes\alpha
+\]
+
+The map (for $w\in V(d),\alpha\in\Aut(c)$)
+\[
+G:w\otimes \alpha \mapsto \varphi^{-1}(w)\otimes 1 \otimes \alpha
+\]
+is obviously a right inverse for $F$, but in fact is an inverse since 
+% on one hand
+
+% \begin{align*}
+% GF(v\otimes\tau\otimes\alpha)&=\varphi^{-1}(\tau*\varphi(v))\otimes 1 \otimes \alpha \\
+% &=\varphi^{-1}(\tau)*v\otimes 1 \otimes \alpha
+% \end{align*}
+
+% and on the other hand
+\begin{align*}
+v\otimes\tau\otimes\alpha&=v\otimes 1 \otimes \psi(f'(\tau))\alpha\\
+&=\pi(\widetilde{\psi(f'(\tau))})*v\otimes 1 \otimes \alpha
+\end{align*}
+for $\widetilde{\psi(f'(\tau))}$ is a preimage of $\psi(f'(\tau))$ in $\Aut(a)$. This means that $G$ is onto and hence invertible.
+\end{proof}

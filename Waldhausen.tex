@@ -1,0 +1,70 @@
+\subsection{The Waldhausen S-construction}
+\label{Waldhausen}
+In this section we recall the variant of the Waldhausen $S$-construction. It was originally introduced by Waldhausen to define the Algebraic K-theory of what are now known as Waldhausen categories. We consider the variant due to Kapranov--Dyckerhoff \cite{KapranovDyckerhoff} that produces a simplicial groupoid associated to an abelian category $\CCC$. 
+
+Note that the classes of mono- and epimorphisms in $\CCC$ satisfy the following: 
+ \begin{enumerate}
+ \item Any commutative square with monomorphisms as vertical and epimorphisms as horizontal maps is a pullback iff it is a pushout. We will call such squares bicartesian.
+  \item Pullbacks and pushouts of monomorphisms along epimorphisms exist.
+ \end{enumerate}
+
+In other words the classes of epi- and monomorphisms provide $\CCC$ with a structure of \emph{proto-abelian} category (see \cite{Dyckerhoff} for more details).
+
+Let $X\in\OrdSet$. We consider the marked category $\grid(X):=\Hom_{\Delta}(0\to 1,X)$ with marked objects being the constant maps. Note that $\grid(X)$ has two classes of maps, the "horizontal" and the "vertical", i.e. the maps that are identity respectively on the 0 or 1 component. 
+
+Define $S_X\CCC$ to be the groupoid of maps from $\grid(X)$ to $\CCC$ which take the marked objects to $0$, the horizontal maps to monomorphisms and the vertical maps to epimorphisms, and take Cartesian squares to Cartesian squares.
+
+\begin{Example}
+Take $X=\ord{1}=0\to 1$, then \[
+\grid(X)=\stik{1}{
+00 \ar{r} \& 01 \ar{d} \\
+{} \& 11
+}
+\]
+and so $S_X\CCC=S_{\ord{1}}\CCC$ is the groupoid of objects of $\CCC$. 
+\end{Example}
+
+\begin{Example}
+Take $X=\ord{2}=0\to 1\to 2$, then  \[
+\grid(X)=\stik{1}{
+00 \ar{r} \& 01 \ar{r} \ar{d} \& 02 \ar{d} \\
+{} \& 11 \ar{r} \& 12 \ar{d} \\
+{} \& {} \& 22
+}
+\]
+The data of a map $\grid(X)\to\CCC$ then consists of a square\[
+\stik{1}{
+C_{01} \ar[hook]{r} \ar[two heads]{d} \& C_{02} \ar[two heads]{d}\\
+C_{11}=0 \ar[hook]{r} \& C_{12}
+}
+\]
+which must be Cartesian and therefore also coCartesian. This just means that $C_{01}\to C_{02} \to C_{12}$ is an exact sequence.
+In all, $S_X\CCC=S_{\ord{2}}\CCC$ is the groupoid of exact sequences in $\CCC$.
+\end{Example}
+For a general $X=\ord{n}$ we get the groupoid of diagrams of the form 
+\[
+\stik{1}{
+0 \ar[hook]{r} \& C_{01} \ar[two heads]{d} \ar[hook]{r} \& C_{02}\ar[two heads]{d} \ar[hook]{r} \& \cdots  \ar[hook]{r} \& C_{0n}\ar[two heads]{d} \\
+{} \& 0  \ar[hook]{r} \& C_{12}\ar[two heads]{d} \ar[hook]{r} \& \cdots  \ar[hook]{r} \& C_{1n}\ar[two heads]{d} \\
+{} \& {} \& 0 \ar[hook]{r} \& \cdots  \ar[hook]{r} \& C_{2n}\ar[two heads]{d}\\
+{} \& {} \& {} \& \ddots \& \vdots\ar[two heads]{d} \\
+{} \& {} \& {} \& {} \& 0
+}
+\]
+where every square is biCartesian.
+
+As shown in \cite{KapranovDyckerhoff} Lemma 2.4.9 the groupoid of diagrams of this shape is equivalent to the groupoid of flags of length $n$.
+
+\lena{we drop the whole mention of needing to consider subcategories for "proto-abelianess" here for the sake of brevity/not mentioning issues we are not fully resolving in the article}
+
+The above formulation of the Waldhausen construction can be extended in an obvious way to provide a functor from the category of simplicial sets $\sset$ to $\Spaces$. For our construction of the candidate for the braiding isomorphism we will need a further extension of this construction to the category of finite distributive lattices $\DLat$ and the presheaves on this category which we call $\lSet$ as discussed in \autoref{ExtWaldhausen}. 
+
+%\begin{Remark}
+%This is for Hall algebra section
+%It is shown in \cite{KapranovDyckerhoff} that the Waldhausen construction described above is a $2$-Segal space.
+%\end{Remark}
+
+\begin{Notation}
+In the following sections we will shorten the notation from $S_{[n]}$ to $S_{n}$.
+\end{Notation}
+

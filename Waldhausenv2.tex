@@ -1,0 +1,63 @@
+\section{The Waldhausen S-construction}
+\label{Waldhausentwo}
+
+\subsection{Classical construction}
+        In this section we recall the variant of the Waldhausen $S$-construction that we shall generalise in Section ***REF***. Originally introduced by Waldhausen to define the Algebraic K-theory of what are now known as Waldhausen categories, we consider the variant due to Kapranov--Dyckerhoff \cite{KapranovDyckerhoff} that produces a simplicial groupoid from a so-called {\em proto-exact category}. 
+
+\begin{Definition}
+ A category $\AAA$ is  proto-exact if it has a zero object $0$, and two distinguished classes of morphisms, the admissible monos $\MMM$ and admissible epis $\EEE$. These satisfy:
+ \begin{enumerate}
+  \item The unique morphism $0 \to A$ is in $\MMM$ and the unique morphism $A \to 0$ is in $\EEE$.
+  \item $\MMM$ and $\EEE$ are closed under composition and contain the isos.
+  \item Any commutative square with vertical maps in $\MMM$ and horizontal maps in $\EEE$ is a pushout if and only if it is a pullback. Such squares are called {\em bicartesian}.
+  \item Pullbacks and pushouts of maps in $\MMM$ along maps in $\EEE$, and vice versa, exist and by $3$ are bicartesian.
+ \end{enumerate}
+\end{Definition}
+
+\begin{Remark}
+We denote admissible monos by $\xymatrix{  \ar@{^{(}->}[r] & }$ and admissible epis by $\xymatrix{\ar@{->>}[r] & }$. Bicartesian diagrams of the form
+ \begin{equation}
+  \xymatrix{A \ar@{^{(}->}[r] \ar@{->>}[d] & B \ar@{->>}[d] \\
+  0 \ar@{^{(}->}[r] & C},
+ \end{equation}
+are called short exact sequences.
+\end{Remark}
+
+\begin{Example}
+\begin{enumerate}
+ \item Every abelian category defines a proto-exact category by declaring all mono- and epi- morphisms to be admissible. In this paper we will only consider the abelian category $\Vect_{\FF_q}$ of finite dimensional vector spaces over the finite field $\FF_q$.
+ 
+ \item Let $\Finpi$ denote the category whose objects are pointed finite sets $S_*$ and whose morphisms are pointed maps $f: S_* \to T_* $ such that $f|_{S_* \setminus f^{-1}(*)}$ is injective. Letting $S = S_* \setminus *$, a morphism $f:S_* \to T_* \in \Finpi$ defines a partially defined injection from $S$ to $T$. 
+ 
+ Declaring the admissible monos to be the injections and the admissible epis to be the surjections endows $\Finpi$ with the structure of a proto-exact category. 
+
+A skeleton of $\Finpi$ has objects indexed by $\NN$. The set of morphisms from the object $n$ to the object $m$ is the set of $m\times n$ matrices having entries in $\{0,1\}$ such that every row and column has at most one non-zero entry. Composition is given by matrix multiplication.  We will not distinguish between this skeleton and $\Finpi$ in the remainder of this work.
+
+\item The previous example is a special case of the following family of proto-exact categories. For a finite group $\Gamma$, define $\Gamma \wr \Finpi $ to be the category having objects indexed by $\NN$. The set of morphisms from the object $n$ to the object $m$ is the set of $m \times n$ matrices having entries in $\{0\} \coprod \Gamma$ such that every row and column has at most one non-zero entry. Composition is again given by matrix multiplication using the group operation, additionally declaring that $0 g = g 0 = 0$. Note that the automorphism group of the object $n$ is $\Gamma \wr \Sigma_n$.
+
+Every group homomorphism $\Gamma \to \Gamma'$ induces a functor $\Gamma \wr \Finpi \to \Gamma' \wr \Finpi$. In particular, the homomorphism $\Gamma \to \{e\}$ induces a functor $\Gamma \wr \Finpi \to \{e\} \wr \Finpi = \Finpi$. The categories $\Gamma \wr \Finpi$ inherent a proto-exact structure by declaring a morphism to be an admissiable mono or epi if and only if its image in $\Finpi$ is such.
+%Should really check that this is all true. 
+\end{enumerate}
+\end{Example}
+
+
+Given a proto-exact category $\AAA$ the Waldhausen $S$-construction produces a simplicial groupoid $S_\bullet(\AAA): \OrdSet^{op} \to \Grpd$ as follows: One begins by defining the cosimplicial category $T_\bullet = \Fun([1], \bullet): \Delta \to \Cat$. Then $S_\bullet(\AAA)$ be the sub-simplicial groupoid of $\Fun(T_\bullet,\AAA)$ where for each $n$, $S_n(\AAA)$ has only invertible natural transformations as morphisms and has objects those $F\in \Fun(T_n,\AAA)$ satisfying
+\begin{enumerate}
+ \item $F(i,i)=0$.
+ \item Horizontal maps are in $\MMM$ and vertical maps are in $\EEE$.
+ \item Each square is bicartesian
+\end{enumerate}
+That is, an object $F \in S_n(\AAA)$ is a diagram of the following form in $\AAA$
+\begin{equation*}
+    \xymatrix{0 \ar@{^{(}->}[r] & F_{01} \ar@{^{(}->}[r] \ar@{->>}[d] & F_{02} \ar@{^{(}->}[r] \ar@{->>}[d]& \cdots \ar@{^{(}->}[r] & F_{0n} \ar@{->>}[d] \\
+     & 0 \ar@{^{(}->}[r] & F_{12} \ar@{^{(}->}[r]\ar@{->>}[d] & \cdots \ar@{^{(}->}[r] & F_{1n} \ar@{->>}[d] \\
+      & & 0 \ar@{^{(}->}[r] & \cdots \ar@{^{(}->}[r]& F_{2n} \ar@{->>}[d] \\
+      & & & &\vdots \ar@{->>}[d] \\
+      & & & & 0 }
+      %Fix this up a little
+\end{equation*}
+wherein every square is bicartesian.
+
+In particular, $S_0(\AAA)$ is the trivial groupoid, $S_1(\AAA)$ is the groupoid of isomorphisms in $\AAA$ and $S_2(\AAA)$ is the groupoid of short exact sequences. 
+
+\subsection{Generalization}

@@ -1,0 +1,22 @@
+\section{Transfer theories}
+In this section we outline two kinds of \emph{transfer theories}: The first  shows how to recover the usual Ringel-Hall algebra from our geometric Hall algebra construction and the second transfers the structure of the geometric Hall algebra to the world of linear categories. In particular using it we
+recover the monoidal structure and the braiding on $\bigoplus_n \Rep(\GL(n,\FF_q))$ and \lena{other example?}
+
+\subsection{Transfer to $\Vect$}
+\label{VectTransfer}
+\lena{Explain how 2-morphisms in $\Corr{\Spaces}$ give equalities}
+This construction is based on a functor from the 1-category of correspondences of groupoids to $\Vect$ described in \cite[\S8.2]{KapranovDyckerhoff}. 
+
+A stack $X$ over $\field$ is sent to the vector space of finitely supported functions on the set $\pi_0(X(\field))$ (i.e. the isomorphism classes of $X(\field)$) which we denote $\Func(X)$.
+
+Given a correspondence $X \xleftarrow{s} Y \xrightarrow{p} Z$ we first send it to the correspondence of groupoids $X(\field) \xleftarrow{s} Y(\field) \xrightarrow{p} Z(\field)$ and then to the map $\Func(X) \to \Func(Z)$ given by $p_!s^*$. This assumes some restrictions on $s$ and $p$ (see \cite[\S 2]{Dyckerhoff}) which are always satisfied in the cases we consider. 
+
+It follows immediately from \cite[Proposition 2.17]{Dyckerhoff} that this assignment is a transfer theory to $\Vect$.
+
+Applying this transfer to $H_{geo}$ recovers the usual Hall algebra.
+\subsection{Linear categories}
+\label{LinCatTransfer}
+Let $X$ be a groupoid and define $\Trans(X)$ to be the category of finitely supported representations of the groupoid $X(\FF_q)$ in $\Vect_\CC$. Using the pushforward defined in \autoref{GroupoidRep} we see that $\Trans$ is naturally a functor and for any $f:X\to Y$, $\Trans(f)$ has a biadjoint with explicit adjunctions. This means that for any square of correspondences we can produce a 2-morphism.
+
+
+
