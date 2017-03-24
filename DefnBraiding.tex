@@ -5,55 +5,76 @@ In their foundational work on braided monoidal categories, Joyal and Street gave
 As this is the notion of braiding which we shall use throughout this paper we will now unpack the Joyal and Street definition.
 
 \begin{Definition}
-A braided monoidal category is the monoidal category \\$(\CCC, \otimes,\monunit, \alpha,\lambda, \rho)$ endowed with the following additional data:
+A braided monoidal category is a monoidal category \\$(\CCC, m,\monunit, \alpha,\lambda, \rho)$ endowed with the following additional data:
 
 \begin{enumerate}
-    \item a functor $\mu: \CCC \times \CCC \to \CCC$;
+    \item a functor $\mu: \CCC \otimes \CCC \to \CCC$;
     \item an isomorphism $\epsilon: \monunit \to \mu(\monunit,\monunit)$;
     \item a natural isomorphism
     \begin{equation}
         \stik{1}{
-                \CCC^{\times 4} \ar{r}{\mu\times\mu} \ar{d}{\overline{\otimes}^2} \& \CCC^{\times 2} \ar{d}{\otimes}  \ar[Rightarrow, shorten <=1em,shorten >=1em]{dl}{\beta} \\
-                \CCC^{\times 2} \ar{r}{\mu} \& \CCC
+                \CCC^{\otimes 4} \ar{r}{\mu\times\mu} \ar{d}{\overline{m}^2} \& \CCC^{\otimes 2} \ar{d}{m}  \ar[Rightarrow, shorten <=1em,shorten >=1em]{dl}{\beta} \\
+                \CCC^{\otimes 2} \ar{r}{\mu} \& \CCC
                 }
     \end{equation}
-    where $\overline{\otimes}^2$ is the induced monoidal structure on $\CCC \times \CCC$.
+    where $\overline{m}^2$ is the induced monoidal structure on $\CCC \otimes \CCC$.
     \item natural isomorphisms $\varrho: \mu(-,\monunit) \Rightarrow \Id$ and $\Lambda: \mu(\monunit,-) \Rightarrow \Id$.
    
 \end{enumerate}
 
  This data must make the following diagrams commute
-    
-    \lena{Make this cube look presentable as a separate equation. Write all the arrows for now. This is the 2-morphism inverse of the cube we wrote.}
+
+Coherence with associator, i.e. the cube:
    
-   \begin{equation}%top-bottom,front-back,left-right
-   \label{braidingcube}
-\stik{2}{
-{} \& {\CCC^4} \ar{rr}[name=topback,above]{\mu^2} \ar{dd}[name=backleft,xshift=-1pc,yshift=1pc]{\overline{\otimes}^2} \& {} \& {\CCC^2} \ar{dd}{\otimes}\\
-{\CCC^6} \ar[crossing over]{rr}[name=topfront,below,xshift=1.5pc]{\mu^3}\ar{dd}[name=frontleft,below,xshift=-1.2pc,yshift=.4pc]{\overline{\otimes}^2 \times \Id^2} \ar{ur}[name=topleft,above, xshift=-.5pc]{\Id^2 \times \overline{\otimes}^2} \& {} \& {\CCC^3} \ar{dd}[name=frontright,xshift=-2.2pc,yshift=1.3pc]{\otimes\times \Id} \ar{ur}[name=topright,below,xshift=.4pc]{\Id\times \otimes} \& {}\\
-{} \& {\CCC^2} \ar{rr}[xshift=.2pc]{\mu} \& {} \& {\CCC}\\
-{\CCC^4} \ar{rr}[name=bottomfront,below]{\overline{\otimes}^2} \ar{ur}[name=bottomleft,sloped,yshift=-0.2pc]{} \& {} \& {\CCC^2} \ar{ur}[below]{\otimes}
-\arrow[Rightarrow,to path={(topright) to[bend left] (topback)}]{}{\beta\times \Id_\mu}%may be wrong
-\arrow[Rightarrow,to path={(frontright) to[bend right] (bottomfront)}]{}{\Id_\mu \times \beta}%may be wrong
-\arrow[Rightarrow,crossing over,to path={(frontright) to[bend right] (topright)}]{}[below,xshift=.1pc]{\alpha}
-\arrow[Rightarrow,to path={(bottomfront) to[bend right] (bottomleft)}]{}{\beta}
-\arrow[Rightarrow,to path={(bottomleft) to[bend left] (backleft)}]{}{\overline{\alpha}^2}
-\arrow[Rightarrow,to path={(topback) to[bend left] (backleft)}]{}{\beta}
+\newcommand{\TFlabel}{m^2\Id^2}
+\newcommand{\TBklabel}{m\Id}
+\newcommand{\TLlabel}{\mu^3}
+\newcommand{\TRlabel}{\mu^2}
+\newcommand{\BFlabel}{\overline{m}}
+\newcommand{\BBklabel}{m}
+\newcommand{\BLlabel}{\mu^2}
+\newcommand{\BRlabel}{\mu}
+\newcommand{\FRlabel}{\overline{m}}
+\newcommand{\FLlabel}{\Id^2m^2}
+\newcommand{\BkRlabel}{m}
+\newcommand{\BkLlabel}{\Id m}
+
+\begin{equation}%top-bottom,front-back,left-right
+\label{braidingcube}
+\stik{1.5}{
+{} \& \CCC^{\otimes 3} \ar{rr}[name=topback,below]{\TBklabel} \ar{dd}[name=backleft,yshift=2.5ex]{\BkLlabel} \& {} \& \CCC^{\otimes 2} \ar{dd}[name=backright,right]{\BkRlabel}\\
+\CCC^{\otimes 6} \ar[crossing over]{rr}[name=topfront,below,xshift=2em,yshift=-0.2ex]{\TFlabel}\ar{dd}[name=frontleft,left]{\FLlabel} \ar{ur}[name=topleft,above]{\TLlabel} \& {} \& \CCC^{\otimes 4} \ar{dd}[name=frontright,yshift=-2.5ex,xshift=0.1em]{\FRlabel} \ar{ur}[name=topright,below]{\TRlabel} \& {}\\
+{} \& \CCC^{\otimes 2} \ar{rr}[name=bottomback,below,xshift=-2em]{\BBklabel} \& {} \& \CCC\\
+\CCC^{\otimes 4} \ar{rr}[name=bottomfront,below]{\BFlabel} \ar{ur}[name=bottomleft,yshift=-0.2pc]{\BLlabel} \& {} \& \CCC^{\otimes 2} \ar{ur}[name=bottomright,below]{\BRlabel}
+\arrow[Rightarrow,to path={(topright) to[bend left] (topback)}, shorten <=0.4em]{}{}
+\arrow[Rightarrow,to path={(frontright) to[bend right] (bottomfront)}]{}{}
+\arrow[Rightarrow,crossing over,to path={(frontright) to[bend right] (topright)}]{}{}
+\arrow[Rightarrow,to path={(bottomfront) to[bend right] (bottomleft)}, shorten <= 0.1em,shorten >=0.5em]{}{}
+\arrow[Rightarrow,to path={(bottomleft) to[bend left] (backleft)}]{}{}
+\arrow[Rightarrow,to path={(topback) to[bend left] (backleft)}]{}{}
 \latearrow{commutative diagrams/crossing over}{2-3}{4-3}{}
 \latearrow{commutative diagrams/crossing over}{2-1}{2-3}{}
 }
 \end{equation}
-    
+where the diagram of two morphisms is
+\[
+\stik{0.8}{
+{} \& \mu\circ\overline{m}\circ \Id^2 m^2 \rar{\beta\Id_{\Id^2 m^2}} \& m\circ\mu^2\circ \Id^2 m^2 \drar{m(\beta\Id_{\mu})}\\
+\mu\circ\overline{m}\circ m^2\Id^2 \urar{\mu(\alpha\times\alpha)} \drar{\beta\Id_{m^2\Id^2}} \& {} \& {} \& m\circ\Id m\circ\mu^3\\
+{} \& m\circ\mu^2\circ m^2\Id^2 \rar{m(\Id_{\mu}\beta)} \& m\circ m\Id\circ \mu^3 \urar{\alpha\Id_{\mu^3}}
+}
+\]
+and coherence with units:
 \[
 \stik{1}{
-                \otimes  (\mu \times \monunit) \ar[Rightarrow]{r}{\otimes (\mu \times \epsilon)} \ar[Rightarrow]{d}{\rho \mu} \& \otimes \mu^2 (\Id^2 \times \monunit^2) \ar[Rightarrow]{d}{\beta (\Id^2 \times \monunit^2)}  \\
-                \mu\ar[Leftarrow]{r}{\mu \overline{\rho}^2} \& \mu \overline{\otimes}^2(\Id^2\times\monunit^2)
+                m  (\mu \times \monunit) \ar[Rightarrow]{r}{m (\mu \times \epsilon)} \ar[Rightarrow]{d}{\rho \mu} \& m \mu^2 (\Id^2 \times \monunit^2) \ar[Rightarrow]{d}{\beta (\Id^2 \times \monunit^2)}  \\
+                \mu\ar[Leftarrow]{r}{\mu \overline{\rho}^2} \& \mu \overline{m}^2(\Id^2\times\monunit^2)
                 } \]
                 
 \[
 \stik{1}{
-                \otimes (\monunit \times \mu) \ar[Rightarrow]{r}{\otimes (\epsilon \times \mu)} \ar[Rightarrow] {d}{\lambda \mu} \& \otimes \mu^2 (\monunit^2\times\Id^2) \ar[Rightarrow]{d}{\beta(\monunit^2\times\Id^2)}   \\
-                \mu \ar[Leftarrow]{r}{\mu \overline{\lambda}^2} \& \mu \overline{\otimes}^2 (\monunit^2\times\Id^2)
+                m (\monunit \times \mu) \ar[Rightarrow]{r}{m (\epsilon \times \mu)} \ar[Rightarrow] {d}{\lambda \mu} \& m \mu^2 (\monunit^2\times\Id^2) \ar[Rightarrow]{d}{\beta(\monunit^2\times\Id^2)}   \\
+                \mu \ar[Leftarrow]{r}{\mu \overline{\lambda}^2} \& \mu \overline{m}^2 (\monunit^2\times\Id^2)
                 }\] 
                 
 \end{Definition}

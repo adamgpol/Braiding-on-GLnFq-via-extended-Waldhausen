@@ -1,22 +1,87 @@
 \section{Transfer theories}
+\label{Transfer}
 In this section we outline two kinds of \emph{transfer theories}: The first  shows how to recover the usual Ringel-Hall algebra from our geometric Hall algebra construction and the second transfers the structure of the geometric Hall algebra to the world of linear categories. In particular using it we
 recover the monoidal structure and the braiding on $\bigoplus_n \Rep(\GL(n,\FF_q))$ and \lena{other example?}
+
+A transfer theory $T$ will need to assign to each square of correspondences a square in our algebraic setting of choice $\AAA$. In this article we will consider the cases of monoidal 1-category $\Vect$ and 2-category $\LinCat$ with product given by the Deligne tensor of categories. 
 
 \subsection{Transfer to $\Vect$}
 \label{VectTransfer}
 \lena{Explain how 2-morphisms in $\Corr{\Spaces}$ give equalities}
-This construction is based on a functor from the 1-category of correspondences of groupoids to $\Vect$ described in \cite[\S8.2]{KapranovDyckerhoff}. 
+This construction is based on a functor from the 1-category of correspondences of groupoids to $\Vect$ described in \cite[\S8.2]{KapranovDyckerhoff} and \cite[\S2]{Dyckerhoff}. 
 
-A stack $X$ over $\field$ is sent to the vector space of finitely supported functions on the set $\pi_0(X(\field))$ (i.e. the isomorphism classes of $X(\field)$) which we denote $\Func(X)$.
+A groupoid $X$ is sent to the $\QQ$ vector space of finitely supported functions on the set $\pi_0(X)$ (i.e. the isomorphism classes of $X$) which we denote $\Func(X)$.
 
-Given a correspondence $X \xleftarrow{s} Y \xrightarrow{p} Z$ we first send it to the correspondence of groupoids $X(\field) \xleftarrow{s} Y(\field) \xrightarrow{p} Z(\field)$ and then to the map $\Func(X) \to \Func(Z)$ given by $p_!s^*$. This assumes some restrictions on $s$ and $p$ (see \cite[\S 2]{Dyckerhoff}) which are always satisfied in the cases we consider. 
+A correspondence of groupoids 
+\begin{equation*}
+\stik{1}{
+X \& Y \ar{r}{p} \ar{l}[above]{s} \& Z 
+}
+\end{equation*}
+is sent to the map 
+\begin{equation*}
+\stik{1}{
+\Func(X) \& \Func(Y) \ar{r}{p_!} \ar[leftarrow,red]{l}{s^*} \& \Func(Z)
+}
+\end{equation*}
+where 
+\[
+p_!\phi(b)=\sum_{a \in A_b}\frac{\phi(a)}{\Aut(a)}
+\]
+\[
+s^*\phi(a)=\phi(F(a))
+\]
+($A_b$ is a 2-fiber over $b$).
+This assumes some restrictions on $s$ and $p$ (see \cite[\S 2]{Dyckerhoff}) which are satisfied e.g. for the categories of representations of simply laced quivers. 
 
-It follows immediately from \cite[Proposition 2.17]{Dyckerhoff} that this assignment is a transfer theory to $\Vect$.
+Consider now the commutative square of correspondences: 
+\begin{equation}
+    \label{CorrSquare2cat}
+    \stik{1}{
+        (0,0) \& (M,0) \ar{r} \ar{l} \& (1,0) \\
+        (0,M) \ar[Rightarrow,shorten <=1em,shorten >=1em]{dr}[above,sloped]{\sim}\ar[Rightarrow,shorten <=1em,shorten >=1em]{ur}[above,sloped]{\sim} \ar{u} \ar{d} \& (M,M)  \ar{r} \ar{l}  \ar{u} \ar{d} \& (1,M)\ar[Rightarrow,shorten <=1em,shorten >=1em]{dl}[above,sloped]{\sim} \ar[Leftarrow,shorten <=1em,shorten >=1em]{ul}[above,sloped]{\sim} \ar{u} \ar{d}\\
+        (0,1) \& (M,1)  \ar{r} \ar{l} \& (1,1)
+    }
+\end{equation}
 
-Applying this transfer to $H_{geo}$ recovers the usual Hall algebra.
-\subsection{Linear categories}
+We want an assignment (compatible with the previous one) from any square as above in $\Spaces$ to a commutative square in $\Vect$. Our assignment for correspondences produces the following diagramm in $\Vect$:
+\[
+ \stik{1}{
+        \Func(0,0) \& \Func(M,0)  \ar{r} \ar[leftarrow,red]{l} \& \Func(1,0)  \\
+        \Func(0,M) \ar[leftarrow,red]{u} \ar{d} \& \Func(M,M) \ar{r} \ar[leftarrow,red]{l}  \ar[leftarrow,red]{u} \ar{d} \& \Func(1,M) \ar[leftarrow,red]{u} \ar{d}\\
+        \Func(0,1) \& \Func(M,1)  \ar{r} \ar[leftarrow,red]{l} \& \Func(1,1)
+    }
+\]
+The upper-left and bottom-right squares are commutative from the definitions of $\square^*$ and $\square_!$. 
+From \cite[Proposition 2.17]{Dyckerhoff} it follows that the upper-right and lower-left squares are commutative whenever they come from 2-pullback squares. 
+
+Applying this transfer to $H_{geom}$ described in \autoref{GeometricHall} recovers the usual Hall algebra \lena{explain again using 2-Segal here - detailed explanation}
+
+\subsection{Linear Categories}
 \label{LinCatTransfer}
 Let $X$ be a groupoid and define $\Trans(X)$ to be the category of finitely supported representations of the groupoid $X(\FF_q)$ in $\Vect_\CC$. Using the pushforward defined in \autoref{GroupoidRep} we see that $\Trans$ is naturally a functor and for any $f:X\to Y$, $\Trans(f)$ has a biadjoint with explicit adjunctions. This means that for any square of correspondences we can produce a 2-morphism.
 
+To begin with, we need an assignment $X\mapsto T(X)$ on objects. Then we need for any correspondence $X\xleftarrow{f}Z\xrightarrow{g}Y$ a morphism $T(X)\to T(Y)$. This will be given by composing $T(g)$ with the dual of $T(f)$. Consider now the square of correspondences: \begin{equation}
+    \label{CorrSquare2cat}
+    \stik{1}{
+        (0,0) \& (M,0) \ar{r} \ar{l} \& (1,0) \\
+        (0,M) \ar[Rightarrow,shorten <=1em,shorten >=1em]{dr}[above,sloped]{\sim}\ar[Rightarrow,shorten <=1em,shorten >=1em]{ur}[above,sloped]{\sim} \ar{u} \ar{d} \& (M,M)  \ar{r} \ar{l}  \ar{u} \ar{d} \& (1,M)\ar[Rightarrow,shorten <=1em,shorten >=1em]{dl}[above,sloped]{\sim} \ar[Leftarrow,shorten <=1em,shorten >=1em]{ul}[above,sloped]{\sim} \ar{u} \ar{d}\\
+        (0,1) \& (M,1)  \ar{r} \ar{l} \& (1,1)
+    }
+\end{equation}
 
+We want an assignment (compatible with the previous one) from any square as above in $\Spaces$ to a square in $\AAA$. Again, if we want to get a 2-morphism we need to replace some things with their duals. Firstly, we need to take the left adjoint of the $(0,1)$ and $(1,0)$ squares, and the double left adjoint of the $(0,0)$ square to get a diagram of the form
+\[
+ \stik{1}{
+        (0,0) \& (M,0) \ar[Rightarrow,red,shorten <=1em,shorten >=1em]{dl} \ar{r} \ar[leftarrow,red]{l} \& (1,0)  \ar[Rightarrow,red,shorten <=1em,shorten >=1em]{dl}\\
+        (0,M) \ar[leftarrow,red]{u} \ar{d} \& (M,M) \ar[Leftarrow,red,shorten <=1em,shorten >=1em]{dl} \ar{r} \ar[leftarrow,red]{l}  \ar[leftarrow,red]{u} \ar{d} \& (1,M)\ar[Rightarrow,shorten <=1em,shorten >=1em]{dl}[above,sloped]{\sim} \ar[leftarrow,red]{u} \ar{d}\\
+        (0,1) \& (M,1)  \ar{r} \ar[leftarrow,red]{l} \& (1,1)
+    }
+\]
+In order to compose this we need to be able to invert the lower left morphism, or the other three. For the $(0,0)$ square this adds no requirement since a double adjoint of an invertible morphism is invertible. For the $(0,1)$ and $(1,0)$ squares the invertibility will follow from the fact that in our construction of $H_{comb}$ these squares will be pullback squares and a property of $T$ to send pullback squares to squares satisfying the \lena{left-right? precisely} Beck-Chevalley condition .
 
+\begin{Definition}[the Beck-Chevalley condition]
+\lena{insert definition of BC}
+\end{Definition}
+
+Thus the Beck-Chevalley condition says precisely that the 2-morphism in the square whose sides are replaced by adjoints is invertible.
